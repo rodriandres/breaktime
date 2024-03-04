@@ -6,7 +6,7 @@ import 'package:cinemapedia/presentation/providers/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
-final movieDetailsProvider = StateNotifierProvider((ref) {
+final movieDetailsProvider = StateNotifierProvider<MovieMapNotifier, Map<String, Movie>>((ref) {
   final getMovie = ref.watch( movieRepositoryProvider).getMovieById;
 
   return MovieMapNotifier(getMovie: getMovie);
