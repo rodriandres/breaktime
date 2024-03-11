@@ -1,55 +1,21 @@
-import 'package:cinemapedia/presentation/providers/movies/movies_providers.dart';
+import 'package:cinemapedia/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({
+    super.key,
+    required this.childView,
+  });
 
   static const name = 'home-screen';
+
+  final Widget childView;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-      ),
-      body: const _HomeView(),
-    );
-  }
-}
-
-class _HomeView extends ConsumerStatefulWidget {
-  const _HomeView();
-
-  @override
-  _HomeViewState createState() => _HomeViewState();
-}
-
-class _HomeViewState extends ConsumerState<_HomeView> {
-
-
-  @override
-  void initState() {
-    
-    super.initState();
-    ref.read( nowPlayingMoviesProvider.notifier ).loadNextPage();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-
-    final nowPlayingMovies = ref.watch( nowPlayingMoviesProvider);
-
-    if ( nowPlayingMovies.length == 0) return CircularProgressIndicator();
-
-    return ListView.builder(
-      itemCount: nowPlayingMovies.length,
-      itemBuilder: (context, index) {
-        final movie = nowPlayingMovies[index];
-        return ListTile(
-          title: Text(movie.title),
-        );
-      },
+      body: childView,
+      bottomNavigationBar: const CustomBottomNavigationBar(),
     );
   }
 }
