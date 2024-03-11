@@ -1,5 +1,6 @@
 export 'shared/custom_appbar.dart';
 export 'shared/custom_bottom_navigationbar.dart';
+export 'shared/custom_navigation_bar.dart';
 export 'shared/full_screen_loader.dart';
 
 export 'movies/movies_slideshow.dart';
