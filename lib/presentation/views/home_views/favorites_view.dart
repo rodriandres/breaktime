@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cinemapedia/domain/entities/movie.dart';
 import 'package:cinemapedia/presentation/providers/providers.dart';
 import 'package:cinemapedia/presentation/widgets/widgets.dart';
+import 'package:go_router/go_router.dart';
 
 class FavoritesView extends ConsumerStatefulWidget {
   
@@ -46,6 +47,29 @@ class FavoritesViewState extends ConsumerState<FavoritesView> {
   Widget build(BuildContext context) {
     final List<Movie> favMovies = ref.watch( favoriteMoviesProvider ).values.toList();
     
+
+    if (favMovies.isEmpty) {
+      final colors = Theme.of(context).colorScheme;
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+
+            Icon( Icons.favorite_outline_sharp, size: 60, color: colors.primary ),
+            Text('Ohh no!!', style: TextStyle(fontSize: 30, color: colors.primary)),
+            const Text('You dont have favorites movies!', style: TextStyle(fontSize: 20, color: Colors.black45)),
+
+            const SizedBox(height: 20),
+
+            FilledButton.tonal(
+              onPressed: () => context.go('/home/0'),
+              child: const Text('Discover..'))
+          ],
+        ),
+      );
+    };
+
     return Scaffold(
       body: MoviesMasonry(
         loadNextPage: loadNextPage,
