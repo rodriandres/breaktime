@@ -4,14 +4,14 @@ import 'package:cinemapedia/presentation/screens/screens.dart';
 import 'package:cinemapedia/presentation/views/views.dart';
 
 final appRouter = GoRouter(
-  initialLocation: '/home/0',
+  initialLocation: '/',
   routes: [
 
     ShellRoute(
       builder: (context, state, child) => HomeScreen(childView: child),
       routes: [
         GoRoute(
-          path: '/home/:page',
+          path: '/',
           builder: (context, state) => const HomeView(),
           routes: [
             GoRoute(

@@ -63,7 +63,7 @@ class FavoritesViewState extends ConsumerState<FavoritesView> {
             const SizedBox(height: 20),
 
             FilledButton.tonal(
-              onPressed: () => context.go('/home/0'),
+              onPressed: () => context.go('/'),
               child: const Text('Discover..'))
           ],
         ),
