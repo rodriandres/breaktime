@@ -26,7 +26,7 @@ class CustomAppbar extends ConsumerWidget {
             width: double.infinity,
             child: Row(children: [
               Icon(Icons.movie_outlined, color: colors.primary,),
-              Text('Cinemapedia', style: titleStyle),
+              Text('BreakTime', style: titleStyle),
               
               const Spacer(),
 
